@@ -14,7 +14,9 @@ class EntriesController < ApplicationController
         prompt3.generate_score
        
         entry.generate_agg_score
-        byebug
+        
+
+        render json: entry
         # master_object = {ent =>{entry}, prompts_with_scores=>{prompt}
         # response
     end 

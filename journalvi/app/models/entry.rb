@@ -25,13 +25,14 @@ class Entry < ApplicationRecord
     avg_neut = neut_scores.reduce(:+) / neut_scores.length
     avg_mixed = mixed_scores.reduce(:+) / mixed_scores.length
 
-    all_avgs['pos'] = avg_pos
-    all_avgs['neg'] = avg_neg
-    all_avgs['neut'] = avg_neut
-    all_avgs['mixed'] = avg_mixed
+    all_avgs['POSITIVE'] = avg_pos
+    all_avgs['NEGATIVE'] = avg_neg
+    all_avgs['NEUTRAL'] = avg_neut
+    all_avgs['MIXED'] = avg_mixed
 
-    byebug
-    all_avgs.max_by{|k,v| v}
-
+    max = all_avgs.max_by{|k,v| v}
+    
+    self.update(agg_score: max[1], agg_score_key: max[0])
   end 
+
 end
