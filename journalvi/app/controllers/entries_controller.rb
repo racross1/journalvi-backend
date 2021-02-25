@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
     skip_before_action :authorized, only: [:create]
-    
+
     def create
         
         entry = Entry.create(user_id: entry_params[:user_id], agg_score:0.0)
@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
         prompt2.generate_score
         prompt3.generate_score
        
-        # entry.generate_agg_score
+        entry.generate_agg_score
         byebug
         # master_object = {ent =>{entry}, prompts_with_scores=>{prompt}
         # response
