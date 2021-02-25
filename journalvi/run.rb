@@ -4,7 +4,11 @@ require 'byebug'
 def testString(string)
     client = Aws::Comprehend::Client.new(region: 'us-west-2')
     resp = client.detect_sentiment({text: string, language_code: "en"})
-    
+    positive = resp.sentiment_score.positive
+    negative = resp.sentiment_score.negative
+    neutral = resp.sentiment_score.neutral
+    mixed = resp.sentiment_score.mixed
+    byebug
     puts resp        
 end 
 
