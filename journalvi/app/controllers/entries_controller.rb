@@ -1,6 +1,12 @@
 class EntriesController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:index, :create]
 
+    def index 
+        user = current_user
+        user_entries = user.entries
+        render json: user_entries
+    end 
+    
     def create
         entry = Entry.create(user_id: entry_params[:user_id], agg_score:0.0, agg_score_key:'', date: entry_params[:p4]['response'])
         
