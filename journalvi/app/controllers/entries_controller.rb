@@ -1,10 +1,15 @@
 class EntriesController < ApplicationController
-    skip_before_action :authorized, only: [:index, :create]
+    skip_before_action :authorized, only: [:index, :show, :create]
 
     def index 
         user = current_user
         user_entries = user.entries
         render json: user_entries
+    end 
+
+    def show
+        byebug 
+        entry = Entry.find(params[:id])
     end 
     
     def create
