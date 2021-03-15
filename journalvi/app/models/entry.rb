@@ -1,6 +1,6 @@
 class Entry < ApplicationRecord
   belongs_to :user
-  has_many :prompts
+  has_many :prompts, dependent: :destroy
   has_many :scores, through: :prompts
 
   def generate_agg_score

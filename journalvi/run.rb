@@ -12,7 +12,7 @@ def testString(string)
     puts resp        
 end 
 
-testString("I love you!")
+testString("Hey, that's pretty neat!")
 
 
 puts 'done'
